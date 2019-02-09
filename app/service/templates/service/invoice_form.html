@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    invoice
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mt-5">
+       <div class="card text-center">
+          <div class="card-header">
+            Оплата Invoice
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Подтвердите форму</h5>
+            <p class="card-text">Сумма оплаты: {{ amount }} {{ currency_name }}</p>
+             <form method="{{ data.data.method }}" action="{{ data.url }}">
+                <input type="hidden" name="lang" value="{{ data.data.url }}" />
+                <input type="hidden" name="m_curorderid" value="{{ data.data.m_curorderid }}"/>
+                <input type="hidden" name="m_historyid" value="{{ data.data.m_historyid }}"/>
+                <input type="hidden" name="m_historytm" value="{{ data.data.m_historytm }}"/>
+                <input type="hidden" name="referer" value="{{ data.data.referer }}"/>
+                <button class="btn btn-primary" type="submit">Подтвердить</button>
+            </form>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+{% endblock %}

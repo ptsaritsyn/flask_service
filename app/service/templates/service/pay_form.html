@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pay
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 mt-5">
+            <div class="card text-center">
+              <div class="card-header">
+                Оплата Pay
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Подтвердите форму</h5>
+                <p class="card-text">Сумма оплаты: {{ amount }} {{ currency_name }}</p>
+                <form action="https://pay.piastrix.com/ru/pay" method="post">
+                    <input type="hidden" name="amount" value="{{ amount }}"/>
+                    <input type="hidden" name="currency" value="{{ currency }}"/>
+                    <input type="hidden" name="shop_id" value="5"/>
+                    <input type="hidden" name="sign" value="{{ sign }}"/>
+                    <input type="hidden" name="shop_order_id" value="{{ shop_order_id }}"/>
+                    <input type="hidden" name="description" value="{{ description }}"/>
+                    <button class="btn btn-primary" type="submit">Подтвердить</button>
+                </form>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+{% endblock %}

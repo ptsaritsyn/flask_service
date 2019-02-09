@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Service
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-5">
+                {% if empty %}
+                    <div class="alert alert-danger" role="alert">
+                      Заполните корректно все поля!
+                    </div>
+                {% endif %}
+                <form action="{{ url_for('service.main_handler') }}" method="post">
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationDefault01">Сумма оплаты</label>
+                      <input type="text" class="form-control" id="validationDefault01" placeholder="Сумма оплаты" name="amount">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="inlineFormCustomSelect">Валюта оплаты</label>
+                      <div class="input-group">
+                      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="currency">
+                        <option value="" selected>Выбрать...</option>
+                        <option value="978">EUR</option>
+                        <option value="840">USD</option>
+                        <option value="643">RUB</option>
+                      </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                      <label for="validationDefault03">Описание товара</label>
+                        <textarea class="form-control" id="validationDefault03" placeholder="Описание товара" name="description"></textarea>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Оплатить</button>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}
